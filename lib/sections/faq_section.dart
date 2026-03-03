@@ -102,10 +102,6 @@ class _AnimatedFaqTileState extends State<_AnimatedFaqTile> {
 
   @override
   Widget build(BuildContext context) {
-    // Antes de disparar, mostra normal (evita sensação de “carregando”)
-    if (!widget.visible) {
-      return _FaqTile(item: widget.item);
-    }
 
     return AnimatedOpacity(
       duration: const Duration(milliseconds: 420),

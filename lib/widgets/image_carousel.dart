@@ -152,18 +152,6 @@ Future<void> _precacheCarouselImages({int limit = 3}) async {
                               ),
                               fit: BoxFit.cover,
                             ),
-                            Container(
-                              decoration: BoxDecoration(
-                                gradient: LinearGradient(
-                                  colors: [
-                                    Colors.black.withOpacity(0.45),
-                                    Colors.black.withOpacity(0.2),
-                                  ],
-                                  begin: Alignment.bottomLeft,
-                                  end: Alignment.topRight,
-                                ),
-                              ),
-                            ),
                             Positioned(
                               left: 24,
                               right: 24,
