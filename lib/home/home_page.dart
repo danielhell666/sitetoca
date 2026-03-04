@@ -50,40 +50,45 @@ class HomePage extends StatelessWidget {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                const SizedBox(height: 6),
-                                Container(
-                                  key: sectionKeys[HomeSection.quemsomos],
-                                  child: const ClinicDescriptionSection(),
-                                ),
-                                const SizedBox(height: 32),
-                                const ImageCarousel(),
-                                const SizedBox(height: 32),
-                                Container(
-                                  key: sectionKeys[HomeSection.especialidades],
-                                  child: const SpecialtiesSection(),
-                                ),
-                                const SizedBox(height: 32),
-                                Container(
-                                  key: sectionKeys[HomeSection.equipe],
-                                  child: const TeamSection(),
-                                ),
-                                const SizedBox(height: 32),
-                                Container(
-                                  key: sectionKeys[HomeSection.depoimentos],
-                                  child: const TestimonialsSection(),
-                                ),
-                                const SizedBox(height: 28),
-                                Container(
-                                  key: sectionKeys[HomeSection.duvidas],
-                                  child: const FaqSection(),
-                                ),
-                                const SizedBox(height: 32),
-                                Container(
-                                  key: sectionKeys[HomeSection.contato],
-                                  child: const BottonInfoSection(),
-                                ),
-                                const SizedBox(height: 40),
-                                SiteSignature()
+ 
+                              const SizedBox(height: 6),
+                              Container(
+                                key: sectionKeys[HomeSection.inicio],
+                                child: const ImageCarousel(),
+                              ),
+                              const SizedBox(height: 32),
+                              Container(
+                                key: sectionKeys[HomeSection.quemsomos],
+                                child: const ClinicDescriptionSection(),
+                              ),
+                              const SizedBox(height: 32),
+                              Container(
+                                key: sectionKeys[HomeSection.especialidades],
+                                child: const SpecialtiesSection(),
+                              ),
+                              const SizedBox(height: 32),
+                              Container(
+                                key: sectionKeys[HomeSection.equipe],
+                                child: const TeamSection(),
+                              ),
+                              const SizedBox(height: 32),
+                              Container(
+                                key: sectionKeys[HomeSection.depoimentos],
+                                child: const TestimonialsSection(),
+                              ),
+                              const SizedBox(height: 28),
+                              Container(
+                                key: sectionKeys[HomeSection.duvidas],
+                                child: const FaqSection(),
+                              ),
+                              const SizedBox(height: 32),
+                              Container(
+                                key: sectionKeys[HomeSection.contato],
+                                child: const BottonInfoSection(),
+                              ),
+                              const SizedBox(height: 40),
+                              SiteSignature()
+                              
                               ],
                             ),
                           ),

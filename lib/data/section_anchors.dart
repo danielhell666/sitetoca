@@ -25,7 +25,7 @@ String sectionLabel(HomeSection s) {
     case HomeSection.inicio:
       return 'Início';
     case HomeSection.quemsomos:
-      return 'Clínica de Neurodesenvolvimento em Brasília';
+      return 'Quem Somos';
     case HomeSection.especialidades:
       return 'Especialidades';
     case HomeSection.equipe:
