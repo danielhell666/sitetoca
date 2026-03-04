@@ -3,9 +3,9 @@ class AppLinks {
   static const instagram =
       'https://www.instagram.com/tocadotamandua.terapias/';
 
-  static const phoneRaw = '61982200488';
-  static const phoneLabel = '(61) 98220-0488';
-  static const whatsappLabel = '(61) 98220-0488';
+  static const phoneRaw = '6139776912';
+  static const phoneLabel = '(61) 39776912';
+  static const whatsappLabel = '(61) 39776912';
 
   static const addressLabel =
       'SIG Quadra 8 lote 2268 sala 02 - Sudoeste, Brasília - DF, 70610-400';

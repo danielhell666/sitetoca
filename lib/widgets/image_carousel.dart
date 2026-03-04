@@ -21,31 +21,23 @@ class _ImageCarouselState extends State<ImageCarousel> {
     super.initState();
     _startAutoPlay();
 
-    // Precarrega algumas imagens após o 1º frame para reduzir travadinhas no Web.
+    // Precarrega todas as imagens após o 1º frame para reduzir travadinhas no Web.
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (!mounted) return;
-      _precacheCarouselImages(limit: 3);
+      _precacheCarouselImages();
     });
   }
 
-Future<void> _precacheCarouselImages({int limit = 3}) async {
+Future<void> _precacheCarouselImages() async {
   if (_didPrecache) return;
   if (carouselItems.isEmpty) return;
   _didPrecache = true;
 
-  final count = limit.clamp(0, carouselItems.length);
-
-  for (var i = 0; i < count; i++) {
-    await precacheImage(
-      AssetImage(carouselItems[i].imageDesktop),
-      context,
-    );
-
-    await precacheImage(
-      AssetImage(carouselItems[i].imageMobile),
-      context,
-    );
-
+  // pre‑cache all entries; Web sometimes chokes when images are loaded
+  // lazily during page transitions.
+  for (var item in carouselItems) {
+    await precacheImage(AssetImage(item.imageDesktop), context);
+    await precacheImage(AssetImage(item.imageMobile), context);
     if (!mounted) return;
   }
 }
@@ -151,18 +143,6 @@ Future<void> _precacheCarouselImages({int limit = 3}) async {
                                 width: cacheWidth,
                               ),
                               fit: BoxFit.cover,
-                            ),
-                            Container(
-                              decoration: BoxDecoration(
-                                gradient: LinearGradient(
-                                  colors: [
-                                    Colors.black.withOpacity(0.45),
-                                    Colors.black.withOpacity(0.2),
-                                  ],
-                                  begin: Alignment.bottomLeft,
-                                  end: Alignment.topRight,
-                                ),
-                              ),
                             ),
                             Positioned(
                               left: 24,

@@ -64,7 +64,6 @@ class _DesktopBar extends StatelessWidget {
         const SizedBox(width: 18),
 
         // MENU (desktop)
-        _NavLink('INÍCIO', () => onNavigate(HomeSection.inicio)),
         _NavLink('QUEM SOMOS', () => onNavigate(HomeSection.quemsomos)),
         _NavLink('ESPECIALIDADES', () => onNavigate(HomeSection.especialidades)),
         _NavLink('EQUIPE', () => onNavigate(HomeSection.equipe)),

@@ -56,10 +56,7 @@ class HomePage extends StatelessWidget {
                                   child: const ClinicDescriptionSection(),
                                 ),
                                 const SizedBox(height: 32),
-                                Container(
-                                  key: sectionKeys[HomeSection.inicio],
-                                  child: const ImageCarousel(),
-                                ),
+                                const ImageCarousel(),
                                 const SizedBox(height: 32),
                                 Container(
                                   key: sectionKeys[HomeSection.especialidades],

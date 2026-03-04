@@ -31,22 +31,22 @@ const carouselItems = <CarouselItem>[
     title: 'Atendimento humanizado',
     subtitle: 'Cuidado individualizado para cada criança.',
   ),
-  // CarouselItem(
-  //   imageDesktop: 'assets/images/carousel/foto4.jpeg',
-  //   imageMobile: 'assets/images/carousel/foto4_m.jpeg',
-  //   title: 'Estrutura completa',
-  //   subtitle: 'Recursos terapêuticos modernos e seguros.',
-  // ),
-  // CarouselItem(
-  //   imageDesktop: 'assets/images/carousel/foto5.jpeg',
-  //   imageMobile: 'assets/images/carousel/foto5_m.jpeg',
-  //   title: 'Resultados comprovados',
-  //   subtitle: 'Histórias de sucesso e progresso de nossos pacientes.',
-  // ),
-  // CarouselItem(
-  //   imageDesktop: 'assets/images/carousel/foto6.jpeg',
-  //   imageMobile: 'assets/images/carousel/foto6_m.jpeg',
-  //   title: 'Compromisso com a excelência',
-  //   subtitle: 'Busca constante por inovação e qualidade.',
-  // ),
+  CarouselItem(
+    imageDesktop: 'assets/images/carousel/foto4.jpeg',
+    imageMobile: 'assets/images/carousel/foto4_m.jpeg',
+    title: 'Estrutura completa',
+    subtitle: 'Recursos terapêuticos modernos e seguros.',
+  ),
+  CarouselItem(
+    imageDesktop: 'assets/images/carousel/foto5.jpeg',
+    imageMobile: 'assets/images/carousel/foto5_m.jpeg',
+    title: 'Resultados comprovados',
+    subtitle: 'Histórias de sucesso e progresso de nossos pacientes.',
+  ),
+  CarouselItem(
+    imageDesktop: 'assets/images/carousel/foto6.jpeg',
+    imageMobile: 'assets/images/carousel/foto6_m.jpeg',
+    title: 'Compromisso com a excelência',
+    subtitle: 'Busca constante por inovação e qualidade.',
+  ),
 ];
