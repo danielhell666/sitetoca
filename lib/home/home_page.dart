@@ -30,80 +30,79 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Stack(
-        children: [
+    return SelectionArea(
+      child: Scaffold(
+        body: Stack(children: [
           Column(
-          children: [
-            TopBar(onNavigate: _goTo),
-            Expanded(
-              child: LayoutBuilder(
-                builder: (context, constraints) {
-                  final width = constraints.maxWidth * 0.85;
-        
-                  return ListView(
-                    padding: const EdgeInsets.all(18),
-                    children: [
-                      Center(
-                        child: SizedBox(
-                          width: width,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              const SizedBox(height: 6),
-                              Container(
-                                key: sectionKeys[HomeSection.inicio],
-                                child: const ImageCarousel(),
-                              ),
-                              const SizedBox(height: 32),
-                              Container(
-                                key: sectionKeys[HomeSection.quemsomos],
-                                child: const ClinicDescriptionSection(),
-                              ),
-                              const SizedBox(height: 32),
-                              Container(
-                                key: sectionKeys[HomeSection.especialidades],
-                                child: const SpecialtiesSection(),
-                              ),
-                              const SizedBox(height: 32),
-                              Container(
-                                key: sectionKeys[HomeSection.equipe],
-                                child: const TeamSection(),
-                              ),
-                              const SizedBox(height: 32),
-                              Container(
-                                key: sectionKeys[HomeSection.depoimentos],
-                                child: const TestimonialsSection(),
-                              ),
-                              const SizedBox(height: 28),
-                              Container(
-                                key: sectionKeys[HomeSection.duvidas],
-                                child: const FaqSection(),
-                              ),
-                              const SizedBox(height: 32),
-                              Container(
-                                key: sectionKeys[HomeSection.contato],
-                                child: const BottonInfoSection(),
-                              ),
-                              const SizedBox(height: 40),
-                              SiteSignature()
-                              
-                            ],
+            children: [
+              TopBar(onNavigate: _goTo),
+              Expanded(
+                child: LayoutBuilder(
+                  builder: (context, constraints) {
+                    final width = constraints.maxWidth * 0.85;
+
+                    return ListView(
+                      padding: const EdgeInsets.all(18),
+                      children: [
+                        Center(
+                          child: SizedBox(
+                            width: width,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                const SizedBox(height: 6),
+                                Container(
+                                  key: sectionKeys[HomeSection.quemsomos],
+                                  child: const ClinicDescriptionSection(),
+                                ),
+                                const SizedBox(height: 32),
+                                Container(
+                                  key: sectionKeys[HomeSection.inicio],
+                                  child: const ImageCarousel(),
+                                ),
+                                const SizedBox(height: 32),
+                                Container(
+                                  key: sectionKeys[HomeSection.especialidades],
+                                  child: const SpecialtiesSection(),
+                                ),
+                                const SizedBox(height: 32),
+                                Container(
+                                  key: sectionKeys[HomeSection.equipe],
+                                  child: const TeamSection(),
+                                ),
+                                const SizedBox(height: 32),
+                                Container(
+                                  key: sectionKeys[HomeSection.depoimentos],
+                                  child: const TestimonialsSection(),
+                                ),
+                                const SizedBox(height: 28),
+                                Container(
+                                  key: sectionKeys[HomeSection.duvidas],
+                                  child: const FaqSection(),
+                                ),
+                                const SizedBox(height: 32),
+                                Container(
+                                  key: sectionKeys[HomeSection.contato],
+                                  child: const BottonInfoSection(),
+                                ),
+                                const SizedBox(height: 40),
+                                SiteSignature()
+                              ],
+                            ),
                           ),
                         ),
-                      ),
-                    ],
-                  );
-                },
+                      ],
+                    );
+                  },
+                ),
               ),
-            ),
-          ],
-        ),
-        Padding(
-          padding: const EdgeInsets.only(bottom: 50.0),
-          child: const WhatsAppFloatingButton(),
-        )
-        ]
+            ],
+          ),
+          Padding(
+            padding: const EdgeInsets.only(bottom: 50.0),
+            child: const WhatsAppFloatingButton(),
+          )
+        ]),
       ),
     );
   }

@@ -192,7 +192,7 @@ class _Brand extends StatelessWidget {
         ClipRRect(
           borderRadius: BorderRadius.circular(14),
           child: Image.asset(
-            'assets/images/logo.jpg',
+            'assets/images/icons/logo.jpg',
             width: logo,
             height: logo,
             fit: BoxFit.cover,
@@ -216,7 +216,7 @@ class _Brand extends StatelessWidget {
               ),
               const SizedBox(height: 2),
               Text(
-                'Terapias',
+                'Terapias Integradas',
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
                 style: TextStyle(

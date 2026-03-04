@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:flutter/services.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../core/platform_helper.dart';
@@ -26,6 +27,14 @@ class BottonInfoSection extends StatelessWidget {
 
     return 'https://static-maps.yandex.ru/1.x/'
         '?lang=pt_BR&ll=$lon,$lat&z=15&size=450,240&l=map&pt=$lon,$lat,pm2gnm';
+  }
+
+  // helper used only by this class; copies text and shows feedback
+  void _copy(BuildContext context, String text) {
+    Clipboard.setData(ClipboardData(text: text));
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(content: Text('Copiado para área de transferência')),
+    );
   }
 
   @override
@@ -119,6 +128,12 @@ class _InfoBlock extends StatelessWidget {
           label: 'Telefone',
           value: AppLinks.phoneLabel,
           onTap: onPhoneTap,
+          onCopy: () {
+            Clipboard.setData(ClipboardData(text: AppLinks.phoneLabel));
+            ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(content: Text('Copiado para área de transferência')),
+            );
+          },
         ),
         const SizedBox(height: 10),
         _InfoLine(
@@ -126,6 +141,12 @@ class _InfoBlock extends StatelessWidget {
           label: 'WhatsApp',
           value: AppLinks.whatsappLabel,
           onTap: onWhatsappTap,
+          onCopy: () {
+            Clipboard.setData(ClipboardData(text: AppLinks.whatsappLabel));
+            ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(content: Text('Copiado para área de transferência')),
+            );
+          },
         ),
         const SizedBox(height: 10),
         _InfoLine(
@@ -133,6 +154,7 @@ class _InfoBlock extends StatelessWidget {
           label: 'Instagram',
           value: 'tocadotamandua.terapias',
           onTap: onInstagramTap,
+          // Instagram QR string rarely copied, skip onCopy
         ),
         const SizedBox(height: 10),
         _InfoLine(
@@ -140,7 +162,13 @@ class _InfoBlock extends StatelessWidget {
           label: 'Endereço',
           value: AppLinks.addressLabel,
           isMultiline: true,
-          onTap: onAddressTap,
+          onCopy: () {
+            Clipboard.setData(ClipboardData(text: AppLinks.addressLabel));
+            ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(content: Text('Copiado para área de transferência')),
+            );
+          },
+          //onTap: onAddressTap,
         ),
       ],
     );
@@ -153,6 +181,7 @@ class _InfoLine extends StatelessWidget {
   final String value;
   final bool isMultiline;
   final VoidCallback? onTap;
+  final VoidCallback? onCopy;
 
   const _InfoLine({
     required this.icon,
@@ -160,6 +189,7 @@ class _InfoLine extends StatelessWidget {
     required this.value,
     this.isMultiline = false,
     this.onTap,
+    this.onCopy,
   });
 
   @override
@@ -203,21 +233,37 @@ class _InfoLine extends StatelessWidget {
                   const TextStyle(color: AppColors.textMuted, height: 1.35),
             ),
           ),
+          if (onCopy != null) ...[
+            const SizedBox(width: 8),
+            GestureDetector(
+              onTap: onCopy,
+              child: const Icon(
+                Icons.copy,
+                size: 18,
+                color: AppColors.textMuted,
+              ),
+            ),
+          ],
         ],
       ),
     );
 
-    if (onTap == null) return content;
+    if (onTap == null && onCopy == null) return content;
 
-    return Semantics(
-      button: true,
-      label: label,
-      child: InkWell(
-        onTap: onTap,
-        borderRadius: BorderRadius.circular(16),
-        child: content,
-      ),
-    );
+    // wrap with semantics only when interactive
+    Widget wrapped = content;
+    if (onTap != null) {
+      wrapped = Semantics(
+        button: true,
+        label: label,
+        child: InkWell(
+          onTap: onTap,
+          borderRadius: BorderRadius.circular(16),
+          child: content,
+        ),
+      );
+    }
+    return wrapped;
   }
 }
 
