@@ -1,6 +1,7 @@
 {
   "hosting": {
-    "public": "build/web",
+    "target": "site-principal",
+    "public": ".",
     "ignore": [
       "firebase.json",
       "**/.*",

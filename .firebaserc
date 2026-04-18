@@ -1,5 +1,16 @@
 {
   "projects": {
-    "default": "clinica-toca-do-tamandua"
-  }
+    "default": "clinicatocadotamandua",
+    "defalt": "clinicatocadotamandua"
+  },
+  "targets": {
+    "clinicatocadotamandua": {
+      "hosting": {
+        "site-principal": [
+          "clinicatocadotamandua"
+        ]
+      }
+    }
+  },
+  "etags": {}
 }
