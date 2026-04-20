@@ -10,10 +10,18 @@
     --text-muted: #4A5A5A;
     --accent: #B6CCC1;
     --white: #FFFFFF;
-    --bg-primary-subtle: #F0F4F3;
-    /* Added for section contrast */
+    --bg-primary-subtle: #E2EAE7;
+    /* Darkened for better section contrast */
     --glass: rgba(255, 255, 255, 0.8);
     --shadow: 0 10px 30px rgba(31, 43, 43, 0.05);
+}
+
+.google-icon {
+    width: 24px;
+    height: 24px;
+    display: inline-block;
+    vertical-align: middle;
+    flex-shrink: 0;
 }
 
 /* Base Styles */
@@ -460,14 +468,13 @@ a.mstat:hover strong {
     transition: all 0.3s ease;
 }
 
-.mstat strong i {
-    font-size: 1.5rem;
-    color: #4285F4;
-    /* Google blue */
+.mstat strong .google-icon {
+    width: 28px;
+    height: 28px;
     transition: transform 0.3s ease;
 }
 
-a.mstat:hover strong i {
+a.mstat:hover strong .google-icon {
     transform: scale(1.1);
 }
 
@@ -509,16 +516,75 @@ a.mstat:hover strong i {
 }
 
 .clinic-img {
+    position: relative;
+    z-index: 1;
+}
+
+/* Base style for the image container */
+.clinic-img-wrapper {
+    position: relative;
     border-radius: 36px;
     overflow: hidden;
     aspect-ratio: 4/3;
-    box-shadow: 0 2px 4px rgba(31, 43, 43, .04),
-        0 8px 20px rgba(31, 43, 43, .06),
-        0 30px 65px rgba(31, 43, 43, .10);
-    position: relative;
+    box-shadow: 0 10px 40px rgba(31, 43, 43, 0.12);
+    z-index: 2;
 }
 
-.clinic-img img {
+/* Decorative background shape */
+.clinic-img::before {
+    content: '';
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    width: 100%;
+    height: 100%;
+    background: var(--secondary);
+    opacity: 0.3;
+    border-radius: 36px;
+    z-index: 0;
+    transition: all 0.6s cubic-bezier(.2, 1, .3, 1);
+}
+
+.clinic-row--reverse .clinic-img::before {
+    left: -15px;
+}
+
+.clinic-row:hover .clinic-img::before {
+    transform: translate(-5px, -5px);
+    opacity: 0.25;
+}
+
+/* Branded floating seal (Badge) */
+.clinic-img::after {
+    content: '';
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    width: 70px;
+    height: 70px;
+    background-color: var(--primary);
+    background-image: url('assets/icones/logo_transparente.png');
+    background-size: 65%;
+    background-position: center;
+    background-repeat: no-repeat;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    opacity: 0.7;
+    border-radius: 50%;
+    z-index: 3;
+    pointer-events: none;
+    transition: all 0.8s cubic-bezier(0.2, 1, 0.3, 1);
+}
+
+.clinic-row--reverse .clinic-img::after {
+    right: auto;
+    left: 15px;
+}
+
+.clinic-row:hover .clinic-img::after {
+    transform: scale(1.1) rotate(15deg);
+}
+
+.clinic-img-wrapper img {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -526,7 +592,7 @@ a.mstat:hover strong i {
     display: block;
 }
 
-.clinic-row:hover .clinic-img img {
+.clinic-row:hover .clinic-img-wrapper img {
     transform: scale(1.06);
 }
 
@@ -656,28 +722,12 @@ a.mstat:hover strong i {
 
 
 
-/* Specialties Section Styling */
 #especialidades {
-    background-color: #F0F4F3;
-    /* Slightly deeper tone for contrast against white cards */
     position: relative;
     overflow: hidden;
 }
 
-/* Cinematic watermark background */
-#especialidades::before {
-    content: 'Terapias';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 20vw;
-    font-weight: 800;
-    color: rgba(105, 129, 131, 0.03);
-    z-index: 0;
-    pointer-events: none;
-    white-space: nowrap;
-}
+
 
 #especialidades .container {
     position: relative;
@@ -801,10 +851,7 @@ a.mstat:hover strong i {
     gap: 40px;
 }
 
-/* ── Team Scroll List ─────────────────────────────── */
-#equipe {
-    background-color: var(--bg-primary-subtle);
-}
+
 
 .team-pills {
     display: flex;
@@ -984,15 +1031,18 @@ a.mstat:hover strong i {
 .pro-bio h3 i {
     font-size: 1.6rem;
     /* Increased from 1.3rem */
-    color: var(--secondary);
+    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
     display: inline-flex;
     margin-top: 2px;
     transition: all 0.3s ease;
 }
 
 .pro-title-link:hover h3 i {
-    color: #E1306C;
-    transform: scale(1.1);
+    transform: scale(1.15) rotate(5deg);
+    opacity: 0.8;
 }
 
 .pro-role {
@@ -1154,13 +1204,8 @@ a.mstat:hover strong i {
     gap: 10px;
 }
 
-.badge-label i {
-    background: linear-gradient(135deg, #4285F4 0%, #34A853 33%, #FBBC05 66%, #EA4335 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    font-size: 1rem;
-    display: inline-block;
+.badge-label .google-icon {
+    margin-right: 2px;
 }
 
 .testimonials-grid {
